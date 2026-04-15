@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Earn in Dollars — SA Health Professionals</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--black:#0a0a0a;--white:#fff;--off:#f7f7f5;--green:#00b341;--green-bg:#e6f7ed;--green-dark:#007a2d;--border:#e8e8e8;--muted:#888;--text:#1a1a1a;}
+html{scroll-behavior:smooth;}
+body{background:#fff;color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden;}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .65s ease,transform .65s ease;}
+.reveal.visible{opacity:1;transform:none;}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+.hero{background:var(--black);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:80px 24px 110px;position:relative;overflow:hidden;}
+.hero-glow{position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:600px;background:radial-gradient(ellipse,rgba(0,179,65,0.15) 0%,transparent 70%);pointer-events:none;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;}
+.deco{position:absolute;pointer-events:none;opacity:.07;}
+.deco-1{top:12%;left:8%;font-size:80px;transform:rotate(-15deg);animation:f1 6s ease-in-out infinite;}
+.deco-2{top:18%;right:7%;font-size:60px;transform:rotate(12deg);animation:f2 8s ease-in-out infinite;}
+.deco-3{bottom:16%;left:6%;font-size:52px;transform:rotate(-8deg);animation:f1 7s ease-in-out infinite .5s;}
+.deco-4{bottom:20%;right:8%;font-size:72px;transform:rotate(20deg);animation:f2 9s ease-in-out infinite 1s;}
+@keyframes f1{0%,100%{transform:rotate(-15deg) translateY(0)}50%{transform:rotate(-15deg) translateY(-12px)}}
+@keyframes f2{0%,100%{transform:rotate(12deg) translateY(0)}50%{transform:rotate(12deg) translateY(-16px)}}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,179,65,.1);border:1px solid rgba(0,179,65,.3);color:#4cde80;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:8px 18px;border-radius:20px;margin-bottom:36px;animation:fdu .8s ease both;}
+.hero-badge span{width:6px;height:6px;border-radius:50%;background:#4cde80;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+@keyframes fdu{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:none}}
+@keyframes fup{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.hero-eye{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:12px;animation:fup .8s ease .1s both;}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,10vw,118px);line-height:.9;color:#fff;margin-bottom:12px;animation:fup .8s ease .2s both;}
+.hero h1 .acc{color:var(--green);display:block;}
+.hero-sub{font-size:clamp(15px,2vw,18px);color:rgba(255,255,255,.5);max-width:500px;line-height:1.75;margin:0 auto 52px;animation:fup .8s ease .3s both;}
+.hero-stats{display:flex;gap:0;justify-content:center;flex-wrap:wrap;margin-bottom:52px;border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;animation:fup .8s ease .4s both;}
+.hero-stat{padding:22px 30px;border-right:1px solid rgba(255,255,255,.08);text-align:center;flex:1;min-width:100px;}
+.hero-stat:last-child{border-right:none;}
+.hero-stat .num{font-family:'Bebas Neue',sans-serif;font-size:36px;color:#fff;line-height:1;}
+.hero-stat .num .g{color:var(--green);}
+.hero-stat .lbl{font-size:10px;color:rgba(255,255,255,.3);letter-spacing:1px;text-transform:uppercase;margin-top:4px;}
+.hero-cta-w{animation:fup .8s ease .5s both;}
+.hero-cta{display:inline-block;background:var(--green);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:20px;letter-spacing:3px;padding:17px 52px;border:none;border-radius:10px;cursor:pointer;transition:.2s;text-decoration:none;}
+.hero-cta:hover{background:var(--green-dark);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,179,65,.3);}
+.hero-note{font-size:12px;color:rgba(255,255,255,.22);margin-top:12px;letter-spacing:.5px;}
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.18);font-size:10px;letter-spacing:3px;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:6px;animation:fup .8s ease .9s both;}
+.scroll-line{width:1px;height:28px;background:rgba(255,255,255,.12);position:relative;overflow:hidden;}
+.scroll-line::after{content:'';position:absolute;top:-28px;left:0;width:1px;height:28px;background:rgba(255,255,255,.45);animation:sdrop 1.5s infinite;}
+@keyframes sdrop{0%{top:-28px}100%{top:28px}}
+.strip{background:var(--black);padding:26px 0;overflow:hidden;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);}
+.strip-inner{display:flex;gap:0;white-space:nowrap;animation:scroll-s 22s linear infinite;}
+.strip-item{padding:0 38px;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.22);display:inline-flex;align-items:center;gap:12px;}
+.strip-dot{width:5px;height:5px;border-radius:50%;background:var(--green);}
+@keyframes scroll-s{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+.sec-label{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--green);font-weight:600;margin-bottom:14px;}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(38px,5vw,68px);color:var(--black);line-height:1;margin-bottom:16px;}
+.sec-sub{font-size:16px;color:var(--muted);line-height:1.8;max-width:520px;margin-bottom:52px;}
+.steps-sec{background:#fff;padding:96px 24px;}
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:2px;background:var(--border);border-radius:20px;overflow:hidden;}
+.sc{background:#fff;padding:40px 30px;transition:.2s;}
+.sc:hover{background:var(--off);}
+.sc-num{font-family:'Bebas Neue',sans-serif;font-size:64px;color:var(--border);line-height:1;margin-bottom:18px;display:block;}
+.sc-icon{font-size:30px;margin-bottom:14px;display:block;}
+.sc h3{font-size:17px;font-weight:700;margin-bottom:10px;}
+.sc p{font-size:14px;color:var(--muted);line-height:1.75;}
+.sc.dark{background:var(--black);}
+.sc.dark:hover{background:#111;}
+.sc.dark .sc-num{color:rgba(0,179,65,.18);}
+.sc.dark h3{color:#fff;}
+.sc.dark p{color:rgba(255,255,255,.45);}
+.pay-sec{background:var(--black);padding:96px 24px;}
+.pay-inner{max-width:920px;margin:0 auto;text-align:center;}
+.pay-sec .sec-title{color:#fff;}
+.pay-sec .sec-sub{color:rgba(255,255,255,.38);margin:0 auto 48px;}
+.pay-tag{display:inline-block;background:rgba(0,179,65,.15);color:#4cde80;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:6px 16px;border-radius:20px;margin-bottom:36px;}
+.pay-cards{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;margin-bottom:36px;align-items:center;}
+@media(max-width:640px){.pay-cards{grid-template-columns:1fr;}}
+.pc{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:32px 24px;transition:.2s;}
+.pc:hover{background:rgba(255,255,255,.06);}
+.pc .brand{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:12px;}
+.pc .amount{font-family:'Bebas Neue',sans-serif;font-size:58px;color:var(--green);line-height:1;margin-bottom:4px;}
+.pc .per{font-size:13px;color:rgba(255,255,255,.28);}
+.pc .vids{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--green);margin-top:8px;}
+.pc.total{border-color:rgba(0,179,65,.3);background:rgba(0,179,65,.07);}
+.pc.total .amount{font-size:72px;color:#fff;}
+.plus{font-family:'Bebas Neue',sans-serif;font-size:56px;color:rgba(255,255,255,.12);text-align:center;}
+.pay-note{font-size:13px;color:rgba(255,255,255,.22);font-style:italic;}
+.who-sec{background:var(--off);padding:96px 24px;}
+.prof-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:12px;margin-bottom:40px;}
+.pcard{background:#fff;border:1.5px solid var(--border);border-radius:14px;padding:22px 14px;text-align:center;transition:.25s;cursor:pointer;user-select:none;}
+.pcard:hover{border-color:var(--green);transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,179,65,.1);}
+.pcard .pi{font-size:28px;margin-bottom:10px;display:block;}
+.pcard .pn{font-size:13px;font-weight:700;margin-bottom:3px;}
+.pcard .ps{font-size:11px;color:var(--muted);}
+.no-box{margin-top:36px;}
+.no-title{font-size:12px;font-weight:700;color:#c62828;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.no-title::after{content:'';flex:1;height:1px;background:#ffcdd2;}
+.no-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.no-chip{background:#fff5f5;border:1px solid #ffcdd2;color:#c62828;font-size:12px;padding:6px 14px;border-radius:20px;display:flex;align-items:center;gap:5px;}
+.no-chip::before{content:'×';font-weight:700;}
+.form-sec{padding:96px 24px;background:#fff;}
+.form-wrap{max-width:700px;margin:0 auto;}
+.form-head{text-align:center;margin-bottom:48px;}
+.prog-bar{display:flex;align-items:center;margin-bottom:44px;}
+.prog-step{display:flex;flex-direction:column;align-items:center;flex:1;position:relative;}
+.prog-step:not(:last-child)::after{content:'';position:absolute;top:17px;left:50%;width:100%;height:2px;background:var(--border);z-index:0;transition:.4s;}
+.prog-step.done:not(:last-child)::after{background:var(--green);}
+.p-dot{width:34px;height:34px;border-radius:50%;border:2px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--muted);position:relative;z-index:1;transition:.3s;}
+.prog-step.active .p-dot{border-color:var(--green);color:var(--green);}
+.prog-step.done .p-dot{background:var(--green);border-color:var(--green);color:#fff;}
+.p-lbl{font-size:11px;color:var(--muted);margin-top:5px;text-align:center;}
+.prog-step.active .p-lbl{color:var(--green);font-weight:600;}
+.fpage{display:none;}
+.fpage.active{display:block;animation:fup .35s ease;}
+.fg{margin-bottom:22px;}
+.fg label{display:block;font-size:13px;font-weight:600;margin-bottom:8px;}
+.fg label .req{color:#e53935;}
+.fg input,.fg select,.fg textarea{width:100%;padding:13px 16px;border:1.5px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:14px;color:var(--text);background:#fff;outline:none;transition:.2s;-webkit-appearance:none;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(0,179,65,.08);}
+.fg textarea{resize:vertical;min-height:100px;line-height:1.6;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:540px){.frow{grid-template-columns:1fr;}}
+.ferr{font-size:12px;color:#e53935;margin-top:5px;display:none;}
+.fg.bad input,.fg.bad select,.fg.bad textarea{border-color:#e53935;}
+.fg.bad .ferr{display:block;}
+.photo-upload{border:1.5px dashed var(--border);border-radius:12px;padding:28px;text-align:center;cursor:pointer;transition:.2s;position:relative;background:var(--off);}
+.photo-upload:hover{border-color:var(--green);background:var(--green-bg);}
+.photo-upload input{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+.photo-upload .pu-icon{font-size:32px;margin-bottom:10px;display:block;}
+.photo-upload .pu-text{font-size:14px;font-weight:600;margin-bottom:4px;}
+.photo-upload .pu-sub{font-size:12px;color:var(--muted);}
+.photo-preview{display:none;margin-top:12px;text-align:center;}
+.photo-preview img{width:80px;height:80px;border-radius:50%;object-fit:cover;border:2px solid var(--green);}
+.qual-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;}
+.qcard{border:1.5px solid var(--border);border-radius:12px;padding:16px 12px;cursor:pointer;text-align:center;transition:.2s;background:#fff;user-select:none;}
+.qcard:hover{border-color:#aaa;background:var(--off);}
+.qcard.sel{border-color:var(--green);background:var(--green-bg);}
+.qcard .qi{font-size:24px;margin-bottom:8px;display:block;}
+.qcard .qn{font-size:13px;font-weight:700;margin-bottom:2px;}
+.qcard .qs{font-size:11px;color:var(--muted);}
+.qcard.sel .qs{color:var(--green-dark);}
+.qual-err{font-size:12px;color:#e53935;margin-top:10px;display:none;}
+.rgroup{display:flex;flex-wrap:wrap;gap:10px;}
+.ropt{flex:1;min-width:120px;border:1.5px solid var(--border);border-radius:10px;padding:12px 14px;cursor:pointer;text-align:center;font-size:14px;transition:.2s;background:#fff;user-select:none;}
+.ropt:hover{border-color:#aaa;background:var(--off);}
+.ropt.sel{border-color:var(--green);background:var(--green-bg);color:var(--green-dark);font-weight:600;}
+.cgroup{display:flex;flex-direction:column;gap:10px;}
+.copt{border:1.5px solid var(--border);border-radius:10px;padding:14px 16px;cursor:pointer;font-size:14px;transition:.2s;background:#fff;user-select:none;display:flex;align-items:center;gap:12px;}
+.copt:hover{border-color:#aaa;background:var(--off);}
+.copt.sel{border-color:var(--green);background:var(--green-bg);}
+.cbox{width:18px;height:18px;border-radius:5px;border:1.5px solid var(--border);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:.2s;font-size:11px;}
+.copt.sel .cbox{background:var(--green);border-color:var(--green);color:#fff;}
+.co-text{flex:1;}
+.co-title{font-weight:600;display:block;}
+.co-sub{font-size:12px;color:var(--muted);margin-top:2px;display:block;}
+.copt.sel .co-sub{color:var(--green-dark);}
+.fnav{display:flex;justify-content:space-between;gap:12px;margin-top:36px;}
+.btn-back{background:transparent;border:1.5px solid var(--border);color:var(--muted);padding:13px 28px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:.2s;}
+.btn-back:hover{border-color:#aaa;color:var(--text);}
+.btn-next{background:var(--green);color:#fff;border:none;padding:13px 36px;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:.2s;flex:1;max-width:260px;}
+.btn-next:hover{background:var(--green-dark);transform:translateY(-2px);}
+.btn-submit{background:var(--black);color:#fff;border:none;padding:17px 40px;border-radius:10px;font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;cursor:pointer;transition:.2s;width:100%;margin-top:12px;}
+.btn-submit:hover{background:#1a1a1a;transform:translateY(-2px);}
+.review-box{background:var(--off);border:1.5px solid var(--border);border-radius:14px;padding:24px;margin-bottom:24px;}
+.rv-row{display:flex;gap:12px;padding:8px 0;border-bottom:1px solid var(--border);}
+.rv-row:last-child{border:none;}
+.rv-lbl{font-size:12px;color:var(--muted);min-width:130px;padding-top:1px;}
+.rv-val{font-size:14px;font-weight:600;flex:1;}
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:999;align-items:center;justify-content:center;padding:24px;}
+.modal-bg.open{display:flex;}
+.modal{background:#fff;border-radius:20px;padding:48px 36px;max-width:440px;width:100%;text-align:center;animation:fup .3s ease;}
+.modal-icon{font-size:52px;margin-bottom:20px;}
+.modal h3{font-family:'Bebas Neue',sans-serif;font-size:34px;margin-bottom:12px;}
+.modal p{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:28px;}
+.modal-btn{background:var(--black);color:#fff;border:none;padding:13px 36px;border-radius:10px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:14px;cursor:pointer;}
+.success{display:none;text-align:center;padding:64px 24px;}
+.success.show{display:block;animation:fup .5s ease;}
+.sicon{width:80px;height:80px;background:var(--green-bg);border:2px solid var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 28px;font-size:32px;}
+.success h2{font-family:'Bebas Neue',sans-serif;font-size:52px;color:var(--green);margin-bottom:12px;}
+.success p{font-size:16px;color:var(--muted);line-height:1.8;max-width:480px;margin:0 auto;}
+.admin-sec{background:var(--off);border-top:1.5px solid var(--border);padding:60px 24px;}
+.admin-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:28px;}
+.admin-title{font-family:'Bebas Neue',sans-serif;font-size:36px;}
+.admin-form{display:flex;gap:10px;}
+.admin-form input{padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;transition:.2s;}
+.admin-form input:focus{border-color:var(--green);}
+.admin-form button{background:var(--black);color:#fff;border:none;padding:10px 22px;border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;}
+.app-table{width:100%;border-collapse:collapse;font-size:13px;background:#fff;border-radius:14px;overflow:hidden;border:1.5px solid var(--border);}
+.app-table th{background:var(--black);color:#fff;padding:12px 14px;text-align:left;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:1px;}
+.app-table td{padding:12px 14px;border-bottom:1px solid var(--border);}
+.app-table tr:last-child td{border-bottom:none;}
+.app-table tr:hover td{background:var(--off);}
+.nbadge{background:var(--green-bg);color:var(--green-dark);font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;}
+.admin-locked{text-align:center;padding:48px;color:var(--muted);font-size:14px;}
+.tbl-actions{display:flex;gap:10px;margin-top:16px;}
+.tbl-actions button{padding:9px 18px;border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;font-weight:600;cursor:pointer;}
+.btn-export{background:var(--black);color:#fff;border:none;}
+.btn-clear{background:transparent;border:1.5px solid #ffcdd2;color:#c62828;}
+footer{background:var(--black);padding:48px 24px;text-align:center;}
+footer .f-logo{font-family:'Bebas Neue',sans-serif;font-size:28px;color:#fff;letter-spacing:3px;margin-bottom:8px;}
+footer p{font-size:13px;color:rgba(255,255,255,.28);line-height:1.8;}
+.fdot{display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--green);margin:0 8px;vertical-align:middle;}
+@media(max-width:700px){.hero-stats .hero-stat{padding:16px 14px;}.pay-cards{grid-template-columns:1fr;}.prof-grid{grid-template-columns:repeat(3,1fr);}.steps-grid{grid-template-columns:1fr;border-radius:14px;}}
+</style>
+</head>
+<body>
+<div class="modal-bg" id="notQualModal"><div class="modal"><div class="modal-icon">🚫</div><h3>Not the Right Fit</h3><p>We're looking for registered healthcare professionals in medication, supplements, or gut health. Your qualification doesn't match what we're looking for right now.</p><button class="modal-btn" onclick="document.getElementById('notQualModal').classList.remove('open')">Understood</button></div></div>
+<section class="hero">
+<div class="hero-grid"></div><div class="hero-glow"></div>
+<div class="deco deco-1">🎬</div><div class="deco deco-2">📸</div><div class="deco deco-3">💊</div><div class="deco deco-4">🎥</div>
+<div class="hero-badge"><span></span>Now Recruiting · South Africa</div>
+<div class="hero-eye">For SA Healthcare Professionals</div>
+<h1>EARN IN<br><span class="acc">DOLLARS</span></h1>
+<p class="hero-sub">We film at your practice. We edit and post the content. You earn every single month — no social media experience needed.</p>
+<div class="hero-stats">
+<div class="hero-stat"><div class="num"><span class="g">$500</span></div><div class="lbl">Per brand / month</div></div>
+<div class="hero-stat"><div class="num"><span class="g">2</span></div><div class="lbl">Active brands</div></div>
+<div class="hero-stat"><div class="num">30</div><div class="lbl">Videos / month</div></div>
+<div class="hero-stat"><div class="num"><span class="g">+20%</span></div><div class="lbl">Commission</div></div>
+</div>
+<div class="hero-cta-w"><a href="#apply" class="hero-cta">APPLY NOW — IT'S FREE</a><p class="hero-note">Free to apply · No obligations · Review within 48 hours</p></div>
+<div class="scroll-hint"><span>SCROLL</span><div class="scroll-line"></div></div>
+</section>
+<div class="strip"><div class="strip-inner"><span class="strip-item"><span class="strip-dot"></span>We film at your practice</span><span class="strip-item"><span class="strip-dot"></span>We handle all editing</span><span class="strip-item"><span class="strip-dot"></span>We post the content</span><span class="strip-item"><span class="strip-dot"></span>You earn in dollars</span><span class="strip-item"><span class="strip-dot"></span>$500 per brand per month</span><span class="strip-item"><span class="strip-dot"></span>+20% commission on sales</span><span class="strip-item"><span class="strip-dot"></span>30 videos per month</span><span class="strip-item"><span class="strip-dot"></span>No social media experience needed</span><span class="strip-item"><span class="strip-dot"></span>We film at your practice</span><span class="strip-item"><span class="strip-dot"></span>We handle all editing</span><span class="strip-item"><span class="strip-dot"></span>We post the content</span><span class="strip-item"><span class="strip-dot"></span>You earn in dollars</span><span class="strip-item"><span class="strip-dot"></span>$500 per brand per month</span><span class="strip-item"><span class="strip-dot"></span>+20% commission on sales</span><span class="strip-item"><span class="strip-dot"></span>30 videos per month</span><span class="strip-item"><span class="strip-dot"></span>No social media experience needed</span></div></div>
+<section class="steps-sec"><div class="wrap"><div class="sec-label reveal">How it works</div><h2 class="sec-title reveal">Four steps. That's it.</h2><div class="steps-grid reveal"><div class="sc"><span class="sc-num">01</span><span class="sc-icon">📋</span><h3>Apply in 3 minutes</h3><p>Fill in the short form below. We review your application and contact you within 48 hours.</p></div><div class="sc dark"><span class="sc-num">02</span><span class="sc-icon">🎥</span><h3>We film you</h3><p>We come to your practice or location. Scripts are 1–2 minutes per video. You need to be a little bit camera confident and able to speak clearly in English.</p></div><div class="sc"><span class="sc-num">03</span><span class="sc-icon">✂️</span><h3>We handle everything</h3><p>We edit, caption, and post the content on our brand platforms. You don't touch a thing after filming.</p></div><div class="sc"><span class="sc-num">04</span><span class="sc-icon">💵</span><h3>You get paid monthly</h3><p>$500 per brand per month retainer, plus 20% commission on every sale your videos generate.</p></div></div></div></section>
+<section class="pay-sec"><div class="pay-inner"><div class="sec-label reveal" style="color:rgba(255,255,255,.3);">Your monthly earning potential</div><h2 class="sec-title reveal">Work with both?<br>Double your income.</h2><p class="sec-sub reveal">Two active brands right now. Sign with both and earn $1,000/month minimum — before commission.</p><div class="pay-tag reveal">Currently 2 active brands · More coming</div><div class="pay-cards"><div class="pc reveal d1"><div class="brand">Serene Herbs</div><div class="amount">$500</div><div class="per">/ month retainer</div><div class="vids">30 videos</div></div><div class="plus reveal d2">+</div><div class="pc reveal d3"><div class="brand">Rosabella</div><div class="amount">$500</div><div class="per">/ month retainer</div><div class="vids">30 videos</div></div></div><div class="pc total reveal" style="max-width:380px;margin:0 auto 36px;"><div class="brand">Both brands combined</div><div class="amount">$1,000</div><div class="per">/ month minimum + 20% comm</div><div class="vids" style="color:var(--green);">60 videos total</div></div><p class="pay-note reveal">Paid monthly. As we bring on more brands, you get the same deal automatically.</p></div></section>
+<section class="who-sec"><div class="wrap"><div class="sec-label reveal">Who qualifies</div><h2 class="sec-title reveal">Healthcare professionals<br>who speak to gut health</h2><p class="sec-sub reveal">You need real credentials and the ability to speak confidently about medication, supplements, or gut health. Click your qualification below to start your application.</p><div class="prof-grid"><div class="pcard reveal d1" onclick="applyAs('Pharmacist')"><span class="pi">💊</span><div class="pn">Pharmacist</div><div class="ps">SAPC Registered</div></div><div class="pcard reveal d2" onclick="applyAs('QPB')"><span class="pi">🎪</span><div class="pn">QPB</div><div class="ps">Qualified Person Business</div></div><div class="pcard reveal d3" onclick="applyAs('General Practitioner')"><span class="pi">🩺</span><div class="pn">GP / Doctor</div><div class="ps">Registered Doctor</div></div><div class="pcard reveal d4" onclick="applyAs('Registered Nurse')"><span class="pi">👩‍⚕️</span><div class="pn">Nurse</div><div class="ps">Registered Nurse / RN</div></div><div class="pcard reveal d5" onclick="applyAs('Dietitian')"><span class="pi">🔬</span><div class="pn">Dietitian</div><div class="ps">Registered Dietitian</div></div><div class="pcard reveal d1" onclick="applyAs('Naturopath')"><span class="pi">🌿</span><div class="pn">Naturopath</div><div class="ps">Registered</div></div><div class="pcard reveal d2" onclick="applyAs('Nutritionist')"><span class="pi">🧬</span><div class="pn">Nutritionist</div><div class="ps">Clinical Nutritionist</div></div><div class="pcard reveal d3" onclick="applyAs('Intern Doctor')"><span class="pi">🏥</span><div class="pn">Intern Doctor</div><div class="ps">Medical Intern</div></div><div class="pcard reveal d4" onclick="applyAs('Paramedic / EMT')"><span class="pi">💉</span><div class="pn">Paramedic / EMT</div><div class="ps">Emergency Medical</div></div><div class="pcard reveal d5" onclick="applyAs('Phytotherapist')"><span class="pi">🧪</span><div class="pn">Phytotherapist</div><div class="ps">Herbal Medicine</div></div><div class="pcard reveal d1" onclick="applyAs('Traditional Healer')"><span class="pi">🪴</span><div class="pn">Traditional Healer</div><div class="ps">Sangoma / Inyanga</div></div><div class="pcard reveal d2" onclick="applyAs('Biokineticist')"><span class="pi">🦻</span><div class="pn">Biokineticist</div><div class="ps">Movement &amp; Health</div></div></div><div class="no-box reveal"><div class="no-title">Not what we're looking for</div><div class="no-chips"><div class="no-chip">Surgeon</div><div class="no-chip">Gynaecologist</div><div class="no-chip">Eye Doctor</div><div class="no-chip">Dentist</div><div class="no-chip">Fitness Coach</div><div class="no-chip">Personal Trainer</div><div class="no-chip">Life Coach</div><div class="no-chip">Psychologist</div><div class="no-chip">Social Worker</div><div class="no-chip">Therapist</div></div></div></div></section>
+<section class="form-sec" id="apply"><div class="form-wrap"><div class="form-head reveal"><div class="sec-label" style="text-align:center;">Apply now — takes 3 minutes</div><h2 class="sec-title" style="text-align:center;font-size:clamp(38px,5vw,62px);">Think this could be you?</h2><p style="color:var(--muted);font-size:15px;line-height:1.8;text-align:center;">We'll review and reach out within 48 hours via WhatsApp and email.</p></div>
+<div class="prog-bar" id="pgBar"><div class="prog-step active" id="ps1"><div class="p-dot">1</div><div class="p-lbl">Qualification</div></div><div class="prog-step" id="ps2"><div class="p-dot">2</div><div class="p-lbl">About You</div></div><div class="prog-step" id="ps3"><div class="p-dot">3</div><div class="p-lbl">Location</div></div><div class="prog-step" id="ps4"><div class="p-dot">4</div><div class="p-lbl">Review</div></div></div>
+<div id="fwrap">
+<div class="fpage active" id="fp1"><div class="fg"><label>What is your qualification? <span class="req">*</span></label><p style="font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.6;">Select the option that describes you. If yours is not listed, we're not the right fit right now.</p><div class="qual-grid" id="qualGrid"><div class="qcard" data-v="Pharmacist" onclick="pickQual(this)"><span class="qi">💊</span><div class="qn">Pharmacist</div><div class="qs">SAPC Registered</div></div><div class="qcard" data-v="QPB" onclick="pickQual(this)"><span class="qi">🎪</span><div class="qn">QPB</div><div class="qs">Qual. Person Business</div></div><div class="qcard" data-v="General Practitioner" onclick="pickQual(this)"><span class="qi">🩺</span><div class="qn">GP / Doctor</div><div class="qs">Registered Doctor</div></div><div class="qcard" data-v="Registered Nurse" onclick="pickQual(this)"><span class="qi">👩‍⚕️</span><div class="qn">Nurse</div><div class="qs">RN / Prof. Nurse</div></div><div class="qcard" data-v="Dietitian" onclick="pickQual(this)"><span class="qi">🔬</span><div class="qn">Dietitian</div><div class="qs">Registered</div></div><div class="qcard" data-v="Naturopath" onclick="pickQual(this)"><span class="qi">🌿</span><div class="qn">Naturopath</div><div class="qs">Registered</div></div><div class="qcard" data-v="Nutritionist" onclick="pickQual(this)"><span class="qi">🧬</span><div class="qn">Nutritionist</div><div class="qs">Clinical</div></div><div class="qcard" data-v="Intern Doctor" onclick="pickQual(this)"><span class="qi">🏥</span><div class="qn">Intern Doctor</div><div class="qs">Medical Intern</div></div><div class="qcard" data-v="Paramedic / EMT" onclick="pickQual(this)"><span class="qi">💉</span><div class="qn">Paramedic</div><div class="qs">EMT / Emergency</div></div><div class="qcard" data-v="Phytotherapist" onclick="pickQual(this)"><span class="qi">🧪</span><div class="qn">Phytotherapist</div><div class="qs">Herbal Medicine</div></div><div class="qcard" data-v="Traditional Healer" onclick="pickQual(this)"><span class="qi">🪴</span><div class="qn">Traditional Healer</div><div class="qs">Sangoma / Inyanga</div></div><div class="qcard" data-v="Biokineticist" onclick="pickQual(this)"><span class="qi">🦻</span><div class="qn">Biokineticist</div><div class="qs">Movement &amp; Health</div></div></div><div class="qual-err" id="qErr">Please select your qualification to continue.</div></div><div class="fnav"><div></div><button class="btn-next" onclick="next(1)">Continue →</button></div></div>
+<div class="fpage" id="fp2"><div class="frow"><div class="fg" id="fg-fn"><label>First name <span class="req">*</span></label><input id="fn" type="text" placeholder="Nomsa"><div class="ferr">Required</div></div><div class="fg" id="fg-ln"><label>Last name <span class="req">*</span></label><input id="ln" type="text" placeholder="Dlamini"><div class="ferr">Required</div></div></div><div class="frow"><div class="fg" id="fg-em"><label>Email address <span class="req">*</span></label><input id="em" type="email" placeholder="nomsa@example.com"><div class="ferr">Valid email required</div></div><div class="fg" id="fg-ph"><label>WhatsApp number <span class="req">*</span></label><input id="ph" type="tel" placeholder="071 234 5678"><div class="ferr">Required</div></div></div><div class="fg"><label>Gender <span class="req">*</span></label><div class="rgroup" id="grp-gender"><div class="ropt" data-k="gender" data-v="Female" onclick="pickR(this)">Female</div><div class="ropt" data-k="gender" data-v="Male" onclick="pickR(this)">Male</div><div class="ropt" data-k="gender" data-v="Non-binary" onclick="pickR(this)">Non-binary</div><div class="ropt" data-k="gender" data-v="Prefer not to say" onclick="pickR(this)">Prefer not to say</div></div><div class="ferr" id="err-gender" style="display:none;margin-top:6px;">Please select your gender.</div></div><div class="frow"><div class="fg" id="fg-age"><label>Age range <span class="req">*</span></label><select id="age"><option value="">Select</option><option>18 – 24</option><option>25 – 34</option><option>35 – 44</option><option>45 – 54</option><option>55 – 64</option><option>65+</option></select><div class="ferr">Required</div></div><div class="fg"><label>Ethnicity (optional)</label><select id="eth"><option value="">Prefer not to say</option><option>Black African</option><option>Coloured</option><option>Indian / Asian</option><option>White</option><option>Other</option></select></div></div><div class="fg"><label>English proficiency <span class="req">*</span></label><p style="font-size:13px;color:var(--muted);margin-bottom:10px;">Scripts are in English. You need to be able to speak clearly and confidently on camera.</p><div class="rgroup" id="grp-english"><div class="ropt" data-k="english" data-v="Fluent — English is my first language" onclick="pickR(this)">Fluent — first language</div><div class="ropt" data-k="english" data-v="Very comfortable — speak it daily" onclick="pickR(this)">Very comfortable</div><div class="ropt" data-k="english" data-v="Good — professional level" onclick="pickR(this)">Good — professional level</div></div><div class="ferr" id="err-english" style="display:none;margin-top:6px;">Please select your English level.</div></div><div class="fg"><label>Photo (optional but recommended)</label><p style="font-size:13px;color:var(--muted);margin-bottom:10px;">A clear headshot helps us review your application faster.</p><div class="photo-upload" id="photoUpload"><input type="file" id="photoInput" accept="image/*" onchange="previewPhoto(this)"><span class="pu-icon">📷</span><div class="pu-text">Upload a photo</div><div class="pu-sub">JPG, PNG — clear face photo preferred</div></div><div class="photo-preview" id="photoPreview"><img id="photoImg" src="" alt="Preview"><p style="font-size:12px;color:var(--green);margin-top:6px;font-weight:600;">Photo uploaded ✓</p></div></div><div class="fnav"><button class="btn-back" onclick="go(1)">← Back</button><button class="btn-next" onclick="next(2)">Continue →</button></div></div>
+<div class="fpage" id="fp3"><div class="frow"><div class="fg" id="fg-prov"><label>Province <span class="req">*</span></label><select id="prov"><option value="">Select province</option><option>Gauteng</option><option>Western Cape</option><option>KwaZulu-Natal</option><option>Eastern Cape</option><option>Limpopo</option><option>Mpumalanga</option><option>North West</option><option>Free State</option><option>Northern Cape</option></select><div class="ferr">Required</div></div><div class="fg" id="fg-city"><label>City / Town <span class="req">*</span></label><input id="city" type="text" placeholder="e.g. Pretoria, Cape Town"><div class="ferr">Required</div></div></div><div class="fg"><label>Where can we film? <span class="req">*</span></label><p style="font-size:13px;color:var(--muted);margin-bottom:12px;">We come to you — or you can come to our filming location in Pretoria/Villeria.</p><div class="rgroup" id="grp-film" style="flex-direction:column;gap:10px;"><div class="ropt" style="text-align:left;flex:none;" data-k="film" data-v="I can travel to Pretoria / Villeria" onclick="pickR(this)">I can travel to Pretoria / Villeria</div><div class="ropt" style="text-align:left;flex:none;" data-k="film" data-v="Film at my practice or location" onclick="pickR(this)">Film at my practice or location</div><div class="ropt" style="text-align:left;flex:none;" data-k="film" data-v="Either works for me" onclick="pickR(this)">Either works for me</div></div><div class="ferr" id="err-film" style="display:none;margin-top:6px;">Please select a filming option.</div></div><div class="fg"><label>Practice / location name (if applicable)</label><input id="prac" type="text" placeholder="e.g. Clicks Pharmacy Menlyn, Dr. Dlamini Family Practice"></div><div class="fg"><label>Which brands are you interested in? <span class="req">*</span></label><div class="cgroup" id="grp-brands"><div class="copt" data-v="Serene Herbs" onclick="pickC(this,'brands')"><div class="cbox">✓</div><div class="co-text"><span class="co-title">Serene Herbs — Natural Gut Health</span><span class="co-sub">$500/month + 20% commission · 30 videos</span></div></div><div class="copt" data-v="Rosabella" onclick="pickC(this,'brands')"><div class="cbox">✓</div><div class="co-text"><span class="co-title">Rosabella</span><span class="co-sub">$500/month + 20% commission · 30 videos</span></div></div><div class="copt" data-v="Both brands" onclick="pickC(this,'brands')"><div class="cbox">✓</div><div class="co-text"><span class="co-title">Both brands — $1,000/month minimum</span><span class="co-sub">Recommended · 60 videos · Double your earning</span></div></div></div><div class="ferr" id="err-brands" style="display:none;margin-top:6px;">Please select at least one brand.</div></div><div class="fnav"><button class="btn-back" onclick="go(2)">← Back</button><button class="btn-next" onclick="next(3)">Continue →</button></div></div>
+<div class="fpage" id="fp4"><h3 style="font-family:'Bebas Neue',sans-serif;font-size:30px;margin-bottom:6px;">Review your application</h3><p style="font-size:14px;color:var(--muted);margin-bottom:24px;line-height:1.6;">Check your details before submitting.</p><div class="review-box" id="rvBox"></div><div class="fg"><label>Anything else you'd like to tell us?</label><textarea id="extra" placeholder="Previous experience, languages spoken, availability, questions..."></textarea></div><div style="display:flex;align-items:flex-start;gap:10px;margin-top:4px;"><input type="checkbox" id="consent" style="width:18px;height:18px;margin-top:3px;flex-shrink:0;accent-color:var(--green);"><label for="consent" style="cursor:pointer;font-size:13px;color:var(--muted);line-height:1.6;">I confirm my information is accurate and I consent to being contacted via WhatsApp and email. <span style="color:#e53935;">*</span></label></div><div class="ferr" id="err-consent" style="display:none;margin-top:6px;font-size:12px;color:#e53935;"></div><div class="fnav" style="flex-direction:column;gap:0;"><button class="btn-back" style="margin-bottom:12px;" onclick="go(3)">← Edit application</button><button class="btn-submit" onclick="submit()">SUBMIT MY APPLICATION 🎬</button></div></div>
+</div>
+<div class="success" id="successSc"><div class="sicon">✓</div><h2>You're In!</h2><p>Application received. We'll review your details and reach out within 48 hours via WhatsApp and email.<br><br>Get ready to be filmed. 🎬</p></div>
+</div></section>
+<section class="admin-sec" id="adminSec"><div class="wrap"><div class="admin-top"><div><div class="admin-title">Applications</div><p style="font-size:13px;color:var(--muted);">Internal review — password protected</p></div><div class="admin-form" id="adminLogin"><input type="password" id="apwd" placeholder="Admin password" onkeydown="if(event.key==='Enter')chkAdmin()"><button onclick="chkAdmin()">View</button></div></div><div id="adminContent"><div class="admin-locked">Enter the admin password to view submitted applications.</div></div></div></section>
+<footer><div class="f-logo">SERENE OUTREACH</div><p>Managed by Tinus Le Grange<span class="fdot"></span>SA Healthcare Content Partnerships<span class="fdot"></span>Pretoria · South Africa</p></footer>
+<script>
+const S={qual:'',fn:'',ln:'',em:'',ph:'',gender:'',age:'',eth:'',english:'',photo:'',prov:'',city:'',film:'',prac:'',brands:[],extra:''};
+let cp=1;
+const AKEY='sh_health_apps_v3';
+const APWD='serene2026';
+window.addEventListener('DOMContentLoaded',()=>{
+  const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting)el.target.classList.add('visible');});},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+});
+function applyAs(qual){S.qual=qual;document.querySelectorAll('.qcard').forEach(c=>{c.classList.toggle('sel',c.dataset.v===qual);});document.getElementById('qErr').style.display='none';document.getElementById('apply').scrollIntoView({behavior:'smooth'});setTimeout(()=>go(2),400);}
+function pickQual(c){document.querySelectorAll('.qcard').forEach(x=>x.classList.remove('sel'));c.classList.add('sel');S.qual=c.dataset.v;document.getElementById('qErr').style.display='none';}
+function pickR(el){const k=el.dataset.k;document.querySelectorAll('[data-k="'+k+'"]').forEach(x=>x.classList.remove('sel'));el.classList.add('sel');S[k]=el.dataset.v;const e=document.getElementById('err-'+k);if(e)e.style.display='none';}
+function pickC(el,key){el.classList.toggle('sel');const v=el.dataset.v;if(el.classList.contains('sel')){if(!S[key].includes(v))S[key].push(v);}else{S[key]=S[key].filter(x=>x!==v);}}
+function previewPhoto(input){if(input.files&&input.files[0]){const reader=new FileReader();reader.onload=e=>{document.getElementById('photoImg').src=e.target.result;document.getElementById('photoPreview').style.display='block';S.photo='uploaded';};reader.readAsDataURL(input.files[0]);}}
+function go(n){document.getElementById('fp'+cp).classList.remove('active');cp=n;document.getElementById('fp'+cp).classList.add('active');updProg();document.getElementById('apply').scrollIntoView({behavior:'smooth',block:'start'});}
+function updProg(){for(let i=1;i<=4;i++){const el=document.getElementById('ps'+i);el.classList.remove('active','done');if(i<cp)el.classList.add('done');if(i===cp)el.classList.add('active');}}
+function next(from){
+  if(from===1){if(!S.qual){document.getElementById('qErr').style.display='block';return;}go(2);}
+  else if(from===2){let ok=true;[['fn','fn'],['ln','ln'],['em','em'],['ph','ph'],['age','age']].forEach(([id,key])=>{const val=document.getElementById(id).value;S[key]=val;const fg=document.getElementById('fg-'+id)||document.getElementById('fg-'+key);const pass=id==='em'?/^[^s@]+@[^s@]+.[^s@]+$/.test(val):(id==='ph'?val.trim().length>=8:val.trim()!=='');if(!pass){if(fg)fg.classList.add('bad');ok=false;}else{if(fg)fg.classList.remove('bad');}});S.eth=document.getElementById('eth').value;if(!S.gender){document.getElementById('err-gender').style.display='block';ok=false;}if(!S.english){document.getElementById('err-english').style.display='block';ok=false;}if(!ok)return;go(3);}
+  else if(from===3){let ok=true;S.prov=document.getElementById('prov').value;S.city=document.getElementById('city').value.trim();S.prac=document.getElementById('prac').value;if(!S.prov){document.getElementById('fg-prov').classList.add('bad');ok=false;}else document.getElementById('fg-prov').classList.remove('bad');if(!S.city){document.getElementById('fg-city').classList.add('bad');ok=false;}else document.getElementById('fg-city').classList.remove('bad');if(!S.film){document.getElementById('err-film').style.display='block';ok=false;}if(S.brands.length===0){document.getElementById('err-brands').style.display='block';ok=false;}else document.getElementById('err-brands').style.display='none';if(!ok)return;buildReview();go(4);}
+}
+function buildReview(){const box=document.getElementById('rvBox');const r=(l,v)=>`<div class="rv-row"><span class="rv-lbl">${l}</span><span class="rv-val">${v||'—'}</span></div>`;box.innerHTML=[r('Qualification',S.qual),r('Full name',S.fn+' '+S.ln),r('Email',S.em),r('WhatsApp',S.ph),r('Gender',S.gender),r('Age',S.age),r('English level',S.english),r('Province',S.prov),r('City',S.city),r('Filming',S.film),r('Practice',S.prac),r('Brands',S.brands.join(', ')),r('Photo',S.photo?'Uploaded ✓':'Not uploaded')].join('');}
+function submit(){S.extra=document.getElementById('extra').value;if(!document.getElementById('consent').checked){document.getElementById('err-consent').textContent='Please tick this to continue.';document.getElementById('err-consent').style.display='block';return;}document.getElementById('err-consent').style.display='none';const apps=JSON.parse(localStorage.getItem(AKEY)||'[]');apps.push({...S,submittedAt:new Date().toISOString(),id:Date.now()});localStorage.setItem(AKEY,JSON.stringify(apps));document.getElementById('fwrap').style.display='none';document.getElementById('pgBar').style.display='none';document.getElementById('successSc').classList.add('show');document.getElementById('apply').scrollIntoView({behavior:'smooth'});}
+function chkAdmin(){if(document.getElementById('apwd').value===APWD){document.getElementById('adminLogin').style.display='none';loadApps();}else{document.getElementById('apwd').style.borderColor='#e53935';document.getElementById('apwd').value='';document.getElementById('apwd').placeholder='Wrong password';}}
+function loadApps(){const apps=JSON.parse(localStorage.getItem(AKEY)||'[]');const c=document.getElementById('adminContent');if(!apps.length){c.innerHTML='<div class="admin-locked">No applications yet. Share your link and watch them roll in. 🎬<\/div>';return;}const rows=apps.map(a=>`<tr><td><span class="nbadge">New<\/span><\/td><td><strong>${a.fn} ${a.ln}<\/strong><\/td><td>${a.qual}<\/td><td>${a.ph}<\/td><td>${a.em}<\/td><td>${a.city}, ${a.prov}<\/td><td>${a.english||'—'}<\/td><td>${(a.brands||[]).join(', ')}<\/td><td>${a.film||'—'}<\/td><td style="color:var(--muted);font-size:12px;">${new Date(a.submittedAt).toLocaleDateString('en-ZA')}<\/td><\/tr>`).join('');c.innerHTML=`<p style="font-size:13px;color:var(--muted);margin-bottom:14px;">${apps.length} application${apps.length!==1?'s':''} received<\/p><div style="overflow-x:auto;"><table class="app-table"><thead><tr><th>Status<\/th><th>Name<\/th><th>Qualification<\/th><th>WhatsApp<\/th><th>Email<\/th><th>Location<\/th><th>English<\/th><th>Brands<\/th><th>Filming<\/th><th>Date<\/th><\/tr><\/thead><tbody>${rows}<\/tbody><\/table><\/div><div class="tbl-actions"><button class="btn-export" onclick="exportCSV()">Export CSV<\/button><button class="btn-clear" onclick="if(confirm('Clear all?')){localStorage.removeItem('sh_health_apps_v3');loadApps();}">Clear all<\/button><\/div>`;}
+function exportCSV(){const apps=JSON.parse(localStorage.getItem(AKEY)||'[]');if(!apps.length)return;const h=['Name','Qualification','Email','WhatsApp','Gender','Age','English','Province','City','Filming','Practice','Brands','Photo','Extra','Date'];const rows=apps.map(a=>[a.fn+' '+a.ln,a.qual,a.em,a.ph,a.gender,a.age,a.english,a.prov,a.city,a.film,a.prac,(a.brands||[]).join('; '),a.photo,a.extra,new Date(a.submittedAt).toLocaleDateString('en-ZA')].map(v=>'"'+(v||'').replace(/"/g,'""')+'"').join(','));const csv=[h.join(','),...rows].join('\n');const a=document.createElement('a');a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);a.download='health_applications.csv';a.click();}
+</script>
+</body>
+</html>
